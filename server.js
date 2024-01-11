@@ -4,6 +4,7 @@ const path = require('path');
 const routes = require('./routes/index');
 
 // DATA
+const sequelize = require('./config/connection');
 
 // APP/PORT
 const app = express();
@@ -18,4 +19,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 // START THE SERVER
-app.listen(PORT, () => console.log(`Server running http://localhost:${PORT}`));
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () =>
+    console.log(`Server running http://localhost:${PORT}`),
+  );
+});
