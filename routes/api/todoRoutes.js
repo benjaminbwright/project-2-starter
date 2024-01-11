@@ -1,10 +1,10 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
 // GET /api/todos - get all the todos
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   res.json([
     {
-      text: "Buy Milk",
+      text: 'Buy Milk',
       complete: false,
     },
   ]);
